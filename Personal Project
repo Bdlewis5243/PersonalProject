@@ -47,14 +47,21 @@ ball.goto(0, 0)                         # Creating a starting position for the b
 
 # Function (A program that follows a specific and defined actions)
 # A function will not work until called upon.
+
 def paddle_a_up():                      # This function will move paddle_a up
     y = paddle_a.ycor()                 # To find the current Y-Coordinate of paddle_a and assigning it to variable Y.
     y += 20                             # Adding 20 pixels to the Y-Coordinate
     paddle_a.sety(y)                    # Sets y variable to the new y
 
+def paddle_a_down():                    # This function will move paddle_a down
+    y = paddle_a.ycor()                 # To find the current Y-Coordinate of paddle_a and assigning it to variable Y.
+    y -= 20                             # Subtracting 20 pixels to the Y-Coordinate
+    paddle_a.sety(y)                    # Sets y variable to the new y
+
 # Keyboard Binding
 wn.listen()                             # Tells the window to listen for keyboard presses
-
+wn.onkeypress(paddle_a_up, "w")         # When the user presses on w (lower case), call the function paddle_a_up
+wn.onkeypress(paddle_a_down, "s")       # When the user presses on s (lower case), call the function paddle_a_down
 
 # Main game loop (the core functions of the game)
 
