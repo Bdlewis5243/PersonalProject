@@ -45,6 +45,16 @@ ball.color("white")                     # Gives the paddle a color
 ball.penup()                            # Turtles by default draws a line so we are raising the pen to prevent that
 ball.goto(0, 0)                         # Creating a starting position for the ball
 
+# Function (A program that follows a specific and defined actions)
+# A function will not work until called upon.
+def paddle_a_up():                      # This function will move paddle_a up
+    y = paddle_a.ycor()                 # To find the current Y-Coordinate of paddle_a and assigning it to variable Y.
+    y += 20                             # Adding 20 pixels to the Y-Coordinate
+    paddle_a.sety(y)                    # Sets y variable to the new y
+
+# Keyboard Binding
+wn.listen()                             # Tells the window to listen for keyboard presses
+
 
 # Main game loop (the core functions of the game)
 
