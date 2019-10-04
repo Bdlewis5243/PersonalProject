@@ -83,9 +83,20 @@ wn.onkeypress(paddle_b_down, "Down")    # When the user presses on down arrow, c
 
 # Main game loop (the core functions of the game)
 
-while True:                             #
-    wn.update()                         #
-
+while True:                             # The loop of the main function, but only if true
+    wn.update()                         # Updates the window with all the new given information
 
     # Move the ball
-    ball.setx(ball.xcor() + ball.dx)    # It takes the current position of the ball (0,0) and adds 2 pixels in the x
+    ball.setx(ball.xcor() + ball.dx)    # It takes the current position of the ball (0,0) and adds 2 pixels to the x
+    ball.sety(ball.ycor() + ball.dy)    # It takes the current position of the ball (0,0) and adds 2 pixels to the y
+
+    # Border Parameters
+    if ball.ycor() > 290:               # If the current Y-Coordinate of the ball is greater than 290
+        ball.sety(290)                  # Sets the ball's Y-Coordinate to 290
+        ball.dy *= -1                   # Takes the ball's position and times it by -1, which reverses the direction
+
+    if ball.ycor() < -290:              # If the current Y-Coordinate of the ball is less than -290
+        ball.sety(-290)                 # Sets the ball's Y-Coordinate to -290
+        ball.dy *= -1                   # Takes the ball's position and times it by -1, which reverses the direction
+
+
