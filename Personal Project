@@ -1,0 +1,17 @@
+# Turtle is used as a basic game maker within python that is pre-installed with python.
+import turtle
+
+# The wn command creates a window for the game.
+# Setting up and formatting the window to specific dimensions.
+
+wn = turtle.Screen()                    # Imports a screen
+wn.title("Pong in Python")              # Gives the screen a name
+wn.bgcolor("black")                     # Chooses background color
+wn.stepup(width=800, height=600)        # Chooses the dimensions of the screen
+wn.tracer(0)                            # Prevents the screen from updating (will make it run better in our case)
+
+# When running the command for the screen (0,0) is in the center with plus 300 up/down and 400 left/right
+# Main game loop (the core functions of the game)
+
+while True:
+    wn.update()
