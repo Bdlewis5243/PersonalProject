@@ -7,7 +7,7 @@ import turtle                           # Module we are importing to use
 wn = turtle.Screen()                    # Imports a screen
 wn.title("Pong in Python")              # Gives the screen a name
 wn.bgcolor("black")                     # Chooses background color
-wn.stepup(width=800, height=600)        # Chooses the dimensions of the screen
+wn.setup(width=800, height=600)        # Chooses the dimensions of the screen
 wn.tracer(0)                            # Prevents the screen from updating (will make it run better in our case)
 
 # When running the command for the screen (0,0) is in the center with plus 300 up/down and 400 left/right
@@ -16,7 +16,10 @@ wn.tracer(0)                            # Prevents the screen from updating (wil
 paddle_a = turtle.Turtle()              # Naming the first paddle and create the object. It is a module.class
 paddle_a.speed(0)                       # Speed of the animation. It is the maximum possible speed
 paddle_a.shape("square")                # Gives the paddle a shape
-paddle_a.color("white")                 #Gives the paddle a color
+paddle_a.color("white")                 # Gives the paddle a color
+paddle_a.penup()                        # Turtles by default draws a line so we are raising the pen to prevent that
+paddle_a.goto(-350, 0)                  # Creating a starting position for the paddle_a
+
 
 # Paddle B
 
