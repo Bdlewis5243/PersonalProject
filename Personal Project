@@ -93,5 +93,6 @@ while True:                             # The loop of the main function, but onl
         ball.dy *= -1                   # Takes the ball's position and times it by -1, which reverses the direction
 
     # Left and Right Border Parameters
-
-
+    if ball.xcor() > 390:               # If the ball goes past paddle_b, meaning it hits the right edge
+        ball.goto(0, 0)                 # Puts the ball back to the center, which is (0,0)
+        ball.dx *= -1                   # Reverses the direction of the ball.
