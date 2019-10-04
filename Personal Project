@@ -7,24 +7,43 @@ import turtle                           # Module we are importing to use
 wn = turtle.Screen()                    # Imports a screen
 wn.title("Pong in Python")              # Gives the screen a name
 wn.bgcolor("black")                     # Chooses background color
-wn.setup(width=800, height=600)        # Chooses the dimensions of the screen
+wn.setup(width=800, height=600)         # Chooses the dimensions of the screen
 wn.tracer(0)                            # Prevents the screen from updating (will make it run better in our case)
 
 # When running the command for the screen (0,0) is in the center with plus 300 up/down and 400 left/right
 
-# Paddle A
+# Paddle A (left-hand side of the screen)
+
 paddle_a = turtle.Turtle()              # Naming the first paddle and create the object. It is a module.class
 paddle_a.speed(0)                       # Speed of the animation. It is the maximum possible speed
 paddle_a.shape("square")                # Gives the paddle a shape
 paddle_a.color("white")                 # Gives the paddle a color
 paddle_a.penup()                        # Turtles by default draws a line so we are raising the pen to prevent that
 paddle_a.goto(-350, 0)                  # Creating a starting position for the paddle_a
+paddle_a.shapesize(stretch_wid=5, stretch_len=1)
+# The above code changes the size of the paddle.
+# It makes the width 5 so 5*20 = 100 height by 20 wide, while keeping the length the same
 
+# Paddle B (right-hand side of the screen, same code as paddle_a but opposite position)
 
-# Paddle B
-
+paddle_b = turtle.Turtle()              # Naming the first paddle and create the object. It is a module.class
+paddle_b.speed(0)                       # Speed of the animation. It is the maximum possible speed
+paddle_b.shape("square")                # Gives the paddle a shape
+paddle_b.color("white")                 # Gives the paddle a color
+paddle_b.penup()                        # Turtles by default draws a line so we are raising the pen to prevent that
+paddle_b.goto(350, 0)                   # Creating a starting position for the paddle_b
+paddle_b.shapesize(stretch_wid=5, stretch_len=1)
+# The above code changes the size of the paddle.
+# It makes the width 5 so 5*20 = 100 height by 20 wide, while keeping the length the same
 
 # Ball
+
+ball = turtle.Turtle()                  # Naming the first paddle and create the object. It is a module.class
+ball.speed(0)                           # Speed of the animation. It is the maximum possible speed
+ball.shape("square")                    # Gives the paddle a shape
+ball.color("white")                     # Gives the paddle a color
+ball.penup()                            # Turtles by default draws a line so we are raising the pen to prevent that
+ball.goto(0, 0)                         # Creating a starting position for the ball
 
 
 # Main game loop (the core functions of the game)
