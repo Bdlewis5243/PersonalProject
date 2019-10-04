@@ -1,5 +1,5 @@
 # Turtle is used as a basic game maker within python that is pre-installed with python.
-import turtle
+import turtle                           # Module we are importing to use
 
 # The wn command creates a window for the game.
 # Setting up and formatting the window to specific dimensions.
@@ -11,6 +11,19 @@ wn.stepup(width=800, height=600)        # Chooses the dimensions of the screen
 wn.tracer(0)                            # Prevents the screen from updating (will make it run better in our case)
 
 # When running the command for the screen (0,0) is in the center with plus 300 up/down and 400 left/right
+
+# Paddle A
+paddle_a = turtle.Turtle()              # Naming the first paddle and create the object. It is a module.class
+paddle_a.speed(0)                       # Speed of the animation. It is the maximum possible speed
+paddle_a.shape("square")                # Gives the paddle a shape
+paddle_a.color("white")                 #Gives the paddle a color
+
+# Paddle B
+
+
+# Ball
+
+
 # Main game loop (the core functions of the game)
 
 while True:
