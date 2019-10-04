@@ -19,7 +19,7 @@ paddle_a.color("white")                 # Gives the paddle a color
 paddle_a.penup()                        # Turtles by default draws a line so we are raising the pen to prevent that
 paddle_a.goto(-350, 0)                  # Creating a starting position for the paddle_a
 paddle_a.shapesize(stretch_wid=5, stretch_len=1)
-# The above code changes the size of the paddle.
+# The above code changes the size of paddle_a.
 # It makes the width 5 so 5*20 = 100 height by 20 wide, while keeping the length the same
 
 # Paddle B (right-hand side of the screen, same code as paddle_a but opposite position)
@@ -30,7 +30,7 @@ paddle_b.color("white")                 # Gives the paddle a color
 paddle_b.penup()                        # Turtles by default draws a line so we are raising the pen to prevent that
 paddle_b.goto(350, 0)                   # Creating a starting position for the paddle_b
 paddle_b.shapesize(stretch_wid=5, stretch_len=1)
-# The above code changes the size of the paddle.
+# The above code changes the size of paddle_b.
 # It makes the width 5 so 5*20 = 100 height by 20 wide, while keeping the length the same
 
 # Ball
