@@ -3,7 +3,6 @@ import turtle                           # Module we are importing to use
 
 # The wn command creates a window for the game.
 # Setting up and formatting the window to specific dimensions.
-
 wn = turtle.Screen()                    # Imports a screen
 wn.title("Pong in Python")              # Gives the screen a name
 wn.bgcolor("black")                     # Chooses background color
@@ -13,7 +12,6 @@ wn.tracer(0)                            # Prevents the screen from updating (wil
 # When running the command for the screen (0,0) is in the center with plus 300 up/down and 400 left/right
 
 # Paddle A (left-hand side of the screen)
-
 paddle_a = turtle.Turtle()              # Naming the first paddle and create the object. It is a module.class
 paddle_a.speed(0)                       # Speed of the animation. It is the maximum possible speed
 paddle_a.shape("square")                # Gives the paddle a shape
@@ -25,7 +23,6 @@ paddle_a.shapesize(stretch_wid=5, stretch_len=1)
 # It makes the width 5 so 5*20 = 100 height by 20 wide, while keeping the length the same
 
 # Paddle B (right-hand side of the screen, same code as paddle_a but opposite position)
-
 paddle_b = turtle.Turtle()              # Naming the first paddle and create the object. It is a module.class
 paddle_b.speed(0)                       # Speed of the animation. It is the maximum possible speed
 paddle_b.shape("square")                # Gives the paddle a shape
@@ -37,7 +34,6 @@ paddle_b.shapesize(stretch_wid=5, stretch_len=1)
 # It makes the width 5 so 5*20 = 100 height by 20 wide, while keeping the length the same
 
 # Ball
-
 ball = turtle.Turtle()                  # Naming the first paddle and create the object. It is a module.class
 ball.speed(0)                           # Speed of the animation. It is the maximum possible speed
 ball.shape("square")                    # Gives the paddle a shape
@@ -52,7 +48,6 @@ ball.dy = 2                             # Ball.delta y it moves the ball 2 pixel
 
 # Function (A program that follows a specific and defined actions)
 # A function will not work until called upon.
-
 def paddle_a_up():                      # This function will move paddle_a up
     y = paddle_a.ycor()                 # To find the current Y-Coordinate of paddle_a and assigning it to variable Y.
     y += 20                             # Adding 20 pixels to the Y-Coordinate
@@ -72,6 +67,7 @@ def paddle_b_down():                    # This function will move paddle_b down
     y = paddle_b.ycor()                 # To find the current Y-Coordinate of paddle_a and assigning it to variable Y.
     y -= 20                             # Subtracting 20 pixels to the Y-Coordinate
     paddle_b.sety(y)
+
 # Keyboard Binding
 wn.listen()                             # Tells the window to listen for keyboard presses
 wn.onkeypress(paddle_a_up, "w")         # When the user presses on w (lower case), call the function paddle_a_up
@@ -79,10 +75,7 @@ wn.onkeypress(paddle_a_down, "s")       # When the user presses on s (lower case
 wn.onkeypress(paddle_b_up, "Up")        # When the user presses on up arrow, call the function paddle_b_up
 wn.onkeypress(paddle_b_down, "Down")    # When the user presses on down arrow, call the function paddle_b_down
 
-
-
 # Main game loop (the core functions of the game)
-
 while True:                             # The loop of the main function, but only if true
     wn.update()                         # Updates the window with all the new given information
 
@@ -90,7 +83,7 @@ while True:                             # The loop of the main function, but onl
     ball.setx(ball.xcor() + ball.dx)    # It takes the current position of the ball (0,0) and adds 2 pixels to the x
     ball.sety(ball.ycor() + ball.dy)    # It takes the current position of the ball (0,0) and adds 2 pixels to the y
 
-    # Border Parameters
+    # Top and Bottom Border Parameters
     if ball.ycor() > 290:               # If the current Y-Coordinate of the ball is greater than 290
         ball.sety(290)                  # Sets the ball's Y-Coordinate to 290
         ball.dy *= -1                   # Takes the ball's position and times it by -1, which reverses the direction
@@ -98,5 +91,7 @@ while True:                             # The loop of the main function, but onl
     if ball.ycor() < -290:              # If the current Y-Coordinate of the ball is less than -290
         ball.sety(-290)                 # Sets the ball's Y-Coordinate to -290
         ball.dy *= -1                   # Takes the ball's position and times it by -1, which reverses the direction
+
+    # Left and Right Border Parameters
 
 
