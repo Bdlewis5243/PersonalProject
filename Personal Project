@@ -45,6 +45,11 @@ ball.color("white")                     # Gives the paddle a color
 ball.penup()                            # Turtles by default draws a line so we are raising the pen to prevent that
 ball.goto(0, 0)                         # Creating a starting position for the ball
 
+ball.dx = 2                             # Ball.delta x it moves the ball 2 pixels in a positive x direction
+ball.dy = 2                             # Ball.delta y it moves the ball 2 pixels in a positive y direction
+
+
+
 # Function (A program that follows a specific and defined actions)
 # A function will not work until called upon.
 
@@ -58,12 +63,29 @@ def paddle_a_down():                    # This function will move paddle_a down
     y -= 20                             # Subtracting 20 pixels to the Y-Coordinate
     paddle_a.sety(y)                    # Sets y variable to the new y
 
+def paddle_b_up():                      # This function will move paddle_b up
+    y = paddle_b.ycor()                 # To find the current Y-Coordinate of paddle_a and assigning it to variable Y.
+    y += 20                             # Adding 20 pixels to the Y-Coordinate
+    paddle_b.sety(y)                    # Sets y variable to the new y
+
+def paddle_b_down():                    # This function will move paddle_b down
+    y = paddle_b.ycor()                 # To find the current Y-Coordinate of paddle_a and assigning it to variable Y.
+    y -= 20                             # Subtracting 20 pixels to the Y-Coordinate
+    paddle_b.sety(y)
 # Keyboard Binding
 wn.listen()                             # Tells the window to listen for keyboard presses
 wn.onkeypress(paddle_a_up, "w")         # When the user presses on w (lower case), call the function paddle_a_up
 wn.onkeypress(paddle_a_down, "s")       # When the user presses on s (lower case), call the function paddle_a_down
+wn.onkeypress(paddle_b_up, "Up")        # When the user presses on up arrow, call the function paddle_b_up
+wn.onkeypress(paddle_b_down, "Down")    # When the user presses on down arrow, call the function paddle_b_down
+
+
 
 # Main game loop (the core functions of the game)
 
-while True:
-    wn.update()
+while True:                             #
+    wn.update()                         #
+
+
+    # Move the ball
+    ball.setx(ball.xcor() + ball.dx)    # It takes the current position of the ball (0,0) and adds 2 pixels in the x
