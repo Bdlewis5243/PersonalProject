@@ -44,6 +44,14 @@ ball.goto(0, 0)                         # Creating a starting position for the b
 ball.dx = 2                             # Ball.delta x it moves the ball 2 pixels in a positive x direction
 ball.dy = 2                             # Ball.delta y it moves the ball 2 pixels in a positive y direction
 
+# Pen - Drawing the score at the top
+# The turtle module comes with many tools and can draw things with the pen tool
+pen = turtle.Turtle()                   # What tool we want the turtle to use
+pen.speed(0)                            # The speed of the animation of the pen
+pen.color("white")                      # The color of the pen
+pen.penup()                             # Picking up the pen when the turtle moves so we dont have lines everywhere
+pen.hideturtle()                        # Seeing what the turtle makes and not the turtle itself
+
 
 
 # Function (A program that follows a specific and defined actions)
@@ -96,3 +104,22 @@ while True:                             # The loop of the main function, but onl
     if ball.xcor() > 390:               # If the ball goes past paddle_b, meaning it hits the right edge
         ball.goto(0, 0)                 # Puts the ball back to the center, which is (0,0)
         ball.dx *= -1                   # Reverses the direction of the ball.
+
+    if ball.xcor() < -390:              # If the ball goes past paddle_a, meaning it hits the left edge
+        ball.goto(0, 0)                 # Puts the ball back to the center, which is (0,0)
+        ball.dx *= -1                   # Reverses the direction of the ball.
+
+    # Paddle and Ball Collision
+    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() - 40):
+        ball.setx(340)
+        ball.dx *= -1
+
+    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() - 40):
+        ball.setx(-340)
+        ball.dx *= -1
+
+    # The above code determines if the ball collides with the edges or inner side of the paddles
+    # If the ball does then its direction is reversed
+
+
+
