@@ -9,6 +9,11 @@ wn.bgcolor("black")                     # Chooses background color
 wn.setup(width=800, height=600)         # Chooses the dimensions of the screen
 wn.tracer(0)                            # Prevents the screen from updating (will make it run better in our case)
 
+# Scoring
+
+
+
+
 # When running the command for the screen (0,0) is in the center with plus 300 up/down and 400 left/right
 
 # Paddle A (left-hand side of the screen)
@@ -51,8 +56,9 @@ pen.speed(0)                            # The speed of the animation of the pen
 pen.color("white")                      # The color of the pen
 pen.penup()                             # Picking up the pen when the turtle moves so we dont have lines everywhere
 pen.hideturtle()                        # Seeing what the turtle makes and not the turtle itself
-
-
+pen.goto(0, 260)                        # Pen starting position
+pen.write("Player A: 0 Player B: 0", align="center", font=("Courier", 24, "normal"))
+# The above code tells the pen what to write, to center it, and the font style, size, and type
 
 # Function (A program that follows a specific and defined actions)
 # A function will not work until called upon.
