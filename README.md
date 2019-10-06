@@ -2,11 +2,11 @@
 
 ### Goals
 
--   Complete the C Sharp tutorial
+-   Complete the Pong in Python
 
 ### Boundaries / Scope
 
--   Complete Course 1: C Sharp
+-   Complete Course 1: Python
 
 ### Success criteria
 
@@ -21,7 +21,7 @@
 
 -   The courses will be available for the duration of the semester.
 -   I have all required software.
--   I can skip the Installing and Using C Sharp units.
+-   I can skip the Installing and Using Python units.
 
 ### Stakeholders
 
