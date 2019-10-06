@@ -8,13 +8,11 @@ wn.title("Pong in Python")              # Gives the screen a name
 wn.bgcolor("black")                     # Chooses background color
 wn.setup(width=800, height=600)         # Chooses the dimensions of the screen
 wn.tracer(0)                            # Prevents the screen from updating (will make it run better in our case)
+# When running the command for the screen (0,0) is in the center with plus 300 up/down and 400 left/right
 
 # Scoring
-
-
-
-
-# When running the command for the screen (0,0) is in the center with plus 300 up/down and 400 left/right
+score_a = 0                             # Setting the score variable for player 1 equal to 0
+score_b = 0                             # Setting the score variable for player 2 equal to 0
 
 # Paddle A (left-hand side of the screen)
 paddle_a = turtle.Turtle()              # Naming the first paddle and create the object. It is a module.class
@@ -110,10 +108,18 @@ while True:                             # The loop of the main function, but onl
     if ball.xcor() > 390:               # If the ball goes past paddle_b, meaning it hits the right edge
         ball.goto(0, 0)                 # Puts the ball back to the center, which is (0,0)
         ball.dx *= -1                   # Reverses the direction of the ball.
+        score_a += 1                    # Adds a point to player 1
+        pen.clear()                     # Clears the text on the screen so it will not write on itself
+        pen.write("Player A: {} Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+        # The above code updates the scoreboard
 
     if ball.xcor() < -390:              # If the ball goes past paddle_a, meaning it hits the left edge
         ball.goto(0, 0)                 # Puts the ball back to the center, which is (0,0)
         ball.dx *= -1                   # Reverses the direction of the ball.
+        score_b += 1                    # Adds a point to player 2
+        pen.clear()                     # Clears the text on the screen so it will not write on itself
+        pen.write("Player A: {} Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+        # The above code updates the scoreboard
 
     # Paddle and Ball Collision
     if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() - 40):
