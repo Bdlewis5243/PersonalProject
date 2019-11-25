@@ -1,4 +1,5 @@
-# Turtle is used as a basic game maker within python that is pre-installed with python.
+# Turtle is used as a basic game maker within python that is pre-installed
+# with python.
 import turtle                           # Module we are importing to use
 
 # The wn command creates a window for the game.
@@ -7,7 +8,71 @@ wn = turtle.Screen()                    # Imports a screen
 wn.title("Pong in Python")              # Gives the screen a name
 wn.bgcolor("black")                     # Chooses background color
 wn.setup(width=800, height=600)         # Chooses the dimensions of the screen
-wn.tracer(0)                            # Prevents the screen from updating (will make it run better in our case)
+wn.tracer(0)                            # Prevents the screen from updating
+#                                         (will make it run better in our case)
+# When running the command for the screen (0,0) is in the center with plus
+# 300 up/down and 400 left/right
+
+pen = turtle.Turtle()
+pen.speed(0)
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 250)
+pen.write("Welcome to Pong", align="center", font=("Courier", 24, "normal"))
+pen.goto(0, 100)
+pen.write("What speed would you like?", align="center", font=("Courier", 24, "normal"))
+pen.goto(-200, 0)
+fast = pen.write("Fast", font=("Courier", 24, "normal"))
+pen.goto(0, 0)
+normal = pen.write("Normal", font=("Courier", 24, "normal"))
+pen.goto(200, 0)
+slow = pen.write("Slow", font=("Courier", 24, "normal"))
+wn.listen()
+
+selected_fast = 0
+selected_normal = 0
+selected_slow = 0
+
+loop = True
+while loop:
+    if wn.onkeypress(slow, "mouse") == True or wn.onkeypress(normal, "mouse") \
+            == True or wn.onkeypress(fast, "mouse") == True:
+        loop = False
+        break
+    else:
+        loop = True
+
+
+# This is for recording ball speed later on
+if wn.onkeypress(fast, "mouse"):
+    selected_fast += 1
+elif wn.onkeypress(normal, "mouse"):
+    selected_normal += 1
+elif wn.onkeypress(slow, "mouse"):
+    selected_slow += 1
+
+
+# The wn command creates a window for the game.
+# Setting up and formatting the window to specific dimensions.
+wn = turtle.Screen()                    # Imports a screen
+wn.title("Pong in Python")              # Gives the screen a name
+wn.bgcolor("black")                     # Chooses background color
+wn.setup(width=800, height=600)         # Chooses the dimensions of the screen
+wn.tracer(0)                            # Prevents the screen from updating
+#                                         (will make it run better in our case)
+# When running the command for the screen (0,0) is in the center with plus
+# 300 up/down and 400 left/right
+
+
+# The wn command creates a window for the game.
+# Setting up and formatting the window to specific dimensions.
+wn = turtle.Screen()                    # Imports a screen
+wn.title("Pong in Python")              # Gives the screen a name
+wn.bgcolor("black")                     # Chooses background color
+wn.setup(width=800, height=600)         # Chooses the dimensions of the screen
+wn.tracer(0)                            # Prevents the screen from updating
+                                        # (will make it run better in our case)
 # When running the command for the screen (0,0) is in the center with plus 300 up/down and 400 left/right
 
 # Scoring
@@ -27,7 +92,7 @@ paddle_a.shapesize(stretch_wid=5, stretch_len=1)
 
 # Paddle B (right-hand side of the screen, same code as paddle_a but opposite position)
 paddle_b = turtle.Turtle()              # Naming the first paddle and create the object. It is a module.class
-paddle_b.speed(0)                       # Speed of the animation. It is the maximum possible speed
+paddle_b.speed(5)                       # Speed of the animation. It is the maximum possible speed
 paddle_b.shape("square")                # Gives the paddle a shape
 paddle_b.color("white")                 # Gives the paddle a color
 paddle_b.penup()                        # Turtles by default draws a line so we are raising the pen to prevent that
@@ -44,8 +109,16 @@ ball.color("white")                     # Gives the paddle a color
 ball.penup()                            # Turtles by default draws a line so we are raising the pen to prevent that
 ball.goto(0, 0)                         # Creating a starting position for the ball
 
+if selected_fast == 1:
+    ball.speed(20)
+elif selected_normal == 1:
+    ball.speed(10)
+elif selected_slow == 1:
+    ball.speed(5)
+
 ball.dx = 2                             # Ball.delta x it moves the ball 2 pixels in a positive x direction
 ball.dy = 2                             # Ball.delta y it moves the ball 2 pixels in a positive y direction
+
 
 # Pen - Drawing the score at the top
 # The turtle module comes with many tools and can draw things with the pen tool
@@ -78,7 +151,7 @@ def paddle_b_up():                      # This function will move paddle_b up
 def paddle_b_down():                    # This function will move paddle_b down
     y = paddle_b.ycor()                 # To find the current Y-Coordinate of paddle_a and assigning it to variable Y.
     y -= 20                             # Subtracting 20 pixels to the Y-Coordinate
-    paddle_b.sety(y)
+    paddle_b.sety(y)                    # Sets y variable to the new y
 
 # Keyboard Binding
 wn.listen()                             # Tells the window to listen for keyboard presses
@@ -132,6 +205,4 @@ while True:                             # The loop of the main function, but onl
 
     # The above code determines if the ball collides with the edges or inner side of the paddles
     # If the ball does then its direction is reversed
-
-
 
