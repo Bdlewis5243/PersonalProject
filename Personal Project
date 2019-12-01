@@ -21,7 +21,8 @@ pen.hideturtle()
 pen.goto(0, 250)
 pen.write("Welcome to Pong", align="center", font=("Courier", 24, "normal"))
 pen.goto(0, 100)
-pen.write("What speed would you like?", align="center", font=("Courier", 24, "normal"))
+pen.write("What speed would you like?", align="center", font=("Courier", 24,
+                                                              "normal"))
 pen.goto(-200, 0)
 fast = pen.write("Fast", font=("Courier", 24, "normal"))
 pen.goto(0, 0)
@@ -36,13 +37,12 @@ selected_slow = 0
 
 loop = True
 while loop:
-    if wn.onkeypress(slow, "mouse") == True or wn.onkeypress(normal, "mouse") \
-            == True or wn.onkeypress(fast, "mouse") == True:
+    if turtle.onkeypress(slow, "mouse") or turtle.onkeypress(normal, "mouse")\
+            or turtle.onkeypress(fast, "mouse"):
         loop = False
         break
     else:
         loop = True
-
 
 # This is for recording ball speed later on
 if wn.onkeypress(fast, "mouse"):
@@ -53,7 +53,7 @@ elif wn.onkeypress(slow, "mouse"):
     selected_slow += 1
 
 
-wn.clearscreen()
+turtle.reset()
 
 # The wn command creates a window for the game.
 # Setting up and formatting the window to specific dimensions.
@@ -63,41 +63,59 @@ wn.bgcolor("black")                     # Chooses background color
 wn.setup(width=800, height=600)         # Chooses the dimensions of the screen
 wn.tracer(0)                            # Prevents the screen from updating
                                         # (will make it run better in our case)
-# When running the command for the screen (0,0) is in the center with plus 300 up/down and 400 left/right
+# When running the command for the screen (0,0) is in the center with plus 300
+# up/down and 400 left/right
 
 # Scoring
-score_a = 0                             # Setting the score variable for player 1 equal to 0
-score_b = 0                             # Setting the score variable for player 2 equal to 0
+score_a = 0                             # Setting the score variable for player
+# 1 equal to 0
+score_b = 0                             # Setting the score variable for player
+# 2 equal to 0
 
 # Paddle A (left-hand side of the screen)
-paddle_a = turtle.Turtle()              # Naming the first paddle and create the object. It is a module.class
-paddle_a.speed(0)                       # Speed of the animation. It is the maximum possible speed
+paddle_a = turtle.Turtle()              # Naming the first paddle and create
+# the object. It is a module.class
+paddle_a.speed(0)                       # Speed of the animation.
+# It is the maximum possible speed
 paddle_a.shape("square")                # Gives the paddle a shape
 paddle_a.color("white")                 # Gives the paddle a color
-paddle_a.penup()                        # Turtles by default draws a line so we are raising the pen to prevent that
-paddle_a.goto(-350, 0)                  # Creating a starting position for the paddle_a
+paddle_a.penup()                        # Turtles by default draws a line so
+# we are raising the pen to prevent that
+paddle_a.goto(-350, 0)                  # Creating a starting position for
+# the paddle_a
 paddle_a.shapesize(stretch_wid=5, stretch_len=1)
 # The above code changes the size of paddle_a.
-# It makes the width 5 so 5*20 = 100 height by 20 wide, while keeping the length the same
+# It makes the width 5 so 5*20 = 100 height by 20 wide, while keeping the
+# length the same
 
-# Paddle B (right-hand side of the screen, same code as paddle_a but opposite position)
-paddle_b = turtle.Turtle()              # Naming the first paddle and create the object. It is a module.class
-paddle_b.speed(5)                       # Speed of the animation. It is the maximum possible speed
+# Paddle B (right-hand side of the screen, same code as paddle_a but opposite
+# position)
+paddle_b = turtle.Turtle()              # Naming the first paddle and create
+# the object. It is a module.class
+paddle_b.speed(5)                       # Speed of the animation. It is the
+# maximum possible speed
 paddle_b.shape("square")                # Gives the paddle a shape
 paddle_b.color("white")                 # Gives the paddle a color
-paddle_b.penup()                        # Turtles by default draws a line so we are raising the pen to prevent that
-paddle_b.goto(350, 0)                   # Creating a starting position for the paddle_b
+paddle_b.penup()                        # Turtles by default draws a line so
+# we are raising the pen to prevent that
+paddle_b.goto(350, 0)                   # Creating a starting position for
+# the paddle_b
 paddle_b.shapesize(stretch_wid=5, stretch_len=1)
 # The above code changes the size of paddle_b.
-# It makes the width 5 so 5*20 = 100 height by 20 wide, while keeping the length the same
+# It makes the width 5 so 5*20 = 100 height by 20 wide, while keeping the
+# length the same
 
 # Ball
-ball = turtle.Turtle()                  # Naming the first paddle and create the object. It is a module.class
-ball.speed(0)                           # Speed of the animation. It is the maximum possible speed
+ball = turtle.Turtle()                  # Naming the first paddle and create
+# the object. It is a module.class
+ball.speed(0)                           # Speed of the animation. It is the
+# maximum possible speed
 ball.shape("square")                    # Gives the paddle a shape
 ball.color("white")                     # Gives the paddle a color
-ball.penup()                            # Turtles by default draws a line so we are raising the pen to prevent that
-ball.goto(0, 0)                         # Creating a starting position for the ball
+ball.penup()                            # Turtles by default draws a line so
+# we are raising the pen to prevent that
+ball.goto(0, 0)                         # Creating a starting position for
+# the ball
 
 if selected_fast == 1:
     ball.speed(20)
@@ -106,8 +124,10 @@ elif selected_normal == 1:
 elif selected_slow == 1:
     ball.speed(5)
 
-ball.dx = 2                             # Ball.delta x it moves the ball 2 pixels in a positive x direction
-ball.dy = 2                             # Ball.delta y it moves the ball 2 pixels in a positive y direction
+ball.dx = 2                             # Ball.delta x it moves the ball 2
+# pixels in a positive x direction
+ball.dy = 2                             # Ball.delta y it moves the ball 2
+# pixels in a positive y direction
 
 
 # Pen - Drawing the score at the top
@@ -115,84 +135,119 @@ ball.dy = 2                             # Ball.delta y it moves the ball 2 pixel
 pen = turtle.Turtle()                   # What tool we want the turtle to use
 pen.speed(0)                            # The speed of the animation of the pen
 pen.color("white")                      # The color of the pen
-pen.penup()                             # Picking up the pen when the turtle moves so we dont have lines everywhere
-pen.hideturtle()                        # Seeing what the turtle makes and not the turtle itself
+pen.penup()                             # Picking up the pen when the turtle
+# moves so we dont have lines everywhere
+pen.hideturtle()                        # Seeing what the turtle makes and
+# not the turtle itself
 pen.goto(0, 260)                        # Pen starting position
-pen.write("Player A: 0 Player B: 0", align="center", font=("Courier", 24, "normal"))
-# The above code tells the pen what to write, to center it, and the font style, size, and type
+pen.write("Player A: 0 Player B: 0", align="center", font=("Courier", 24,
+                                                           "normal"))
+# The above code tells the pen what to write, to center it, and the font
+# style, size, and type
 
 # Function (A program that follows a specific and defined actions)
 # A function will not work until called upon.
+
 def paddle_a_up():                      # This function will move paddle_a up
-    y = paddle_a.ycor()                 # To find the current Y-Coordinate of paddle_a and assigning it to variable Y.
+    y = paddle_a.ycor()                 # To find the current Y-Coordinate of
+    # paddle_a and assigning it to variable Y.
     y += 20                             # Adding 20 pixels to the Y-Coordinate
     paddle_a.sety(y)                    # Sets y variable to the new y
 
 def paddle_a_down():                    # This function will move paddle_a down
-    y = paddle_a.ycor()                 # To find the current Y-Coordinate of paddle_a and assigning it to variable Y.
-    y -= 20                             # Subtracting 20 pixels to the Y-Coordinate
+    y = paddle_a.ycor()                 # To find the current Y-Coordinate of
+    # paddle_a and assigning it to variable Y.
+    y -= 20                             # Subtracting 20 pixels to the
+    # Y-Coordinate
     paddle_a.sety(y)                    # Sets y variable to the new y
 
 def paddle_b_up():                      # This function will move paddle_b up
-    y = paddle_b.ycor()                 # To find the current Y-Coordinate of paddle_a and assigning it to variable Y.
+    y = paddle_b.ycor()                 # To find the current Y-Coordinate of
+    # paddle_a and assigning it to variable Y.
     y += 20                             # Adding 20 pixels to the Y-Coordinate
     paddle_b.sety(y)                    # Sets y variable to the new y
 
 def paddle_b_down():                    # This function will move paddle_b down
-    y = paddle_b.ycor()                 # To find the current Y-Coordinate of paddle_a and assigning it to variable Y.
-    y -= 20                             # Subtracting 20 pixels to the Y-Coordinate
+    y = paddle_b.ycor()                 # To find the current Y-Coordinate of
+    # paddle_a and assigning it to variable Y.
+    y -= 20                             # Subtracting 20 pixels to the
+    # Y-Coordinate
     paddle_b.sety(y)                    # Sets y variable to the new y
 
 # Keyboard Binding
-wn.listen()                             # Tells the window to listen for keyboard presses
-wn.onkeypress(paddle_a_up, "w")         # When the user presses on w (lower case), call the function paddle_a_up
-wn.onkeypress(paddle_a_down, "s")       # When the user presses on s (lower case), call the function paddle_a_down
-wn.onkeypress(paddle_b_up, "Up")        # When the user presses on up arrow, call the function paddle_b_up
-wn.onkeypress(paddle_b_down, "Down")    # When the user presses on down arrow, call the function paddle_b_down
+wn.listen()                             # Tells the window to listen for
+# keyboard presses
+wn.onkeypress(paddle_a_up, "w")         # When the user presses on w
+# (lower case), call the function paddle_a_up
+wn.onkeypress(paddle_a_down, "s")       # When the user presses on s
+# (lower case), call the function paddle_a_down
+wn.onkeypress(paddle_b_up, "Up")        # When the user presses on up
+# arrow, call the function paddle_b_up
+wn.onkeypress(paddle_b_down, "Down")    # When the user presses on down
+# arrow, call the function paddle_b_down
 
 # Main game loop (the core functions of the game)
-while True:                             # The loop of the main function, but only if true
-    wn.update()                         # Updates the window with all the new given information
+while True:                             # The loop of the main function,
+    # but only if true
+    wn.update()                         # Updates the window with all the
+    # new given information
 
     # Move the ball
-    ball.setx(ball.xcor() + ball.dx)    # It takes the current position of the ball (0,0) and adds 2 pixels to the x
-    ball.sety(ball.ycor() + ball.dy)    # It takes the current position of the ball (0,0) and adds 2 pixels to the y
+    ball.setx(ball.xcor() + ball.dx)    # It takes the current position of
+    # the ball (0,0) and adds 2 pixels to the x
+    ball.sety(ball.ycor() + ball.dy)    # It takes the current position of
+    # the ball (0,0) and adds 2 pixels to the y
 
     # Top and Bottom Border Parameters
-    if ball.ycor() > 290:               # If the current Y-Coordinate of the ball is greater than 290
+    if ball.ycor() > 290:               # If the current Y-Coordinate of the
+        # ball is greater than 290
         ball.sety(290)                  # Sets the ball's Y-Coordinate to 290
-        ball.dy *= -1                   # Takes the ball's position and times it by -1, which reverses the direction
+        ball.dy *= -1                   # Takes the ball's position and times
+        # it by -1, which reverses the direction
 
-    if ball.ycor() < -290:              # If the current Y-Coordinate of the ball is less than -290
+    if ball.ycor() < -290:              # If the current Y-Coordinate of the
+        # ball is less than -290
         ball.sety(-290)                 # Sets the ball's Y-Coordinate to -290
-        ball.dy *= -1                   # Takes the ball's position and times it by -1, which reverses the direction
+        ball.dy *= -1                   # Takes the ball's position and times
+        # it by -1, which reverses the direction
 
     # Left and Right Border Parameters
-    if ball.xcor() > 390:               # If the ball goes past paddle_b, meaning it hits the right edge
-        ball.goto(0, 0)                 # Puts the ball back to the center, which is (0,0)
+    if ball.xcor() > 390:               # If the ball goes past paddle_b,
+        # meaning it hits the right edge
+        ball.goto(0, 0)                 # Puts the ball back to the center,
+        # which is (0,0)
         ball.dx *= -1                   # Reverses the direction of the ball.
         score_a += 1                    # Adds a point to player 1
-        pen.clear()                     # Clears the text on the screen so it will not write on itself
-        pen.write("Player A: {} Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+        pen.clear()                     # Clears the text on the screen
+        # so it will not write on itself
+        pen.write("Player A: {} Player B: {}".format(score_a, score_b),
+                  align="center", font=("Courier", 24, "normal"))
         # The above code updates the scoreboard
 
-    if ball.xcor() < -390:              # If the ball goes past paddle_a, meaning it hits the left edge
-        ball.goto(0, 0)                 # Puts the ball back to the center, which is (0,0)
+    if ball.xcor() < -390:              # If the ball goes past paddle_a,
+        # meaning it hits the left edge
+        ball.goto(0, 0)                 # Puts the ball back to the center,
+        # which is (0,0)
         ball.dx *= -1                   # Reverses the direction of the ball.
         score_b += 1                    # Adds a point to player 2
-        pen.clear()                     # Clears the text on the screen so it will not write on itself
-        pen.write("Player A: {} Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+        pen.clear()                     # Clears the text on the screen
+        # so it will not write on itself
+        pen.write("Player A: {} Player B: {}".format(score_a, score_b),
+                  align="center", font=("Courier", 24, "normal"))
         # The above code updates the scoreboard
 
     # Paddle and Ball Collision
-    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() - 40):
+    if (340 < ball.xcor() < 350) and (
+            paddle_b.ycor() + 40 > ball.ycor() > paddle_b.ycor() - 40):
         ball.setx(340)
         ball.dx *= -1
 
-    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() - 40):
+    if (-340 > ball.xcor() > -350) and (
+            paddle_a.ycor() + 40 > ball.ycor() > paddle_a.ycor() - 40):
         ball.setx(-340)
         ball.dx *= -1
 
-    # The above code determines if the ball collides with the edges or inner side of the paddles
+    # The above code determines if the ball collides with the edges or inner
+    # side of the paddles
     # If the ball does then its direction is reversed
 
