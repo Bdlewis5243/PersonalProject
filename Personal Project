@@ -1,3 +1,15 @@
+"""
+__Author: Bailey
+"""
+# Project follows the "Pong in Python" online tutorial:
+# https://www.youtube.com/playlist?list=PLlEgNdBJEO-kXk2PyBxhSmo84hsO3HAz2
+
+# The code creates a window and asks what speed does the user want the ball
+# to move. It can go in only 3 modes: slow, normal, or fast. When an answer
+# is selected then the game begins and a score is kept up with until the
+# user decides to end the game.
+
+
 # Turtle is used as a basic game maker within python that is pre-installed
 # with python.
 import turtle                           # Module we are importing to use
